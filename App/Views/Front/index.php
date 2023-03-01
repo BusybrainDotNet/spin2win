@@ -13,12 +13,12 @@ include 'layout/navbar.php';
     <div class="container py-md-5">
       <div class="row bottom-ab-grids align-items-center">
         <div class="col-lg-6 bottom-ab-left pr-lg-5">
-          <h6 class="sub-title">Welcome To <?= trim(getenv('APP_NAME')); ?>, </h6>
-          <h3 class="hny-title">SPIN AND WIN CASH PRIZES.</h3>
+          <h6 class="sub-title">Welcome To <?= trim(getenv('APP_NAME')); ?> </h6>
+          <h3 class="hny-title">SPIN AND WIN <br>CASH PRIZES</h3>
           <p class="my-3 pr-lg-4">
-            Spin The Luckey Wheel And Win Real Money And Gifts Instantly!
+            Spin The Lucky Wheel And Win Real Money And Gifts Prizes Instantly!
           </p>
-          <a href="<?= baseURL('about-us/'); ?>" class="btn btn-style btn-secondary mt-4">Learn How To Play</a>
+          <a href="<?= baseURL('how-to-play/'); ?>" class="btn btn-style btn-secondary mt-4">Learn How To Play</a>
         </div>
         <div class="col-lg-6 bottom-ab-right mt-lg-0 mt-5">
           <link rel="stylesheet" href="<?= public_asset('/other_assets/front/assets/spinner/main.css') ?>" type="text/css" />
@@ -33,22 +33,22 @@ include 'layout/navbar.php';
                         <br />
                         <table class="power" cellpadding="10" cellspacing="0">
                             <tr>
-                                <th align="center">Power</th>
+                                <th align="center">Place Stake</th>
                             </tr>
                             <tr>
-                                <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
+                                <td width="78" align="center" id="pw3" onClick="powerSelected(3);">$50</td>
                             </tr>
                             <tr>
-                                <td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
+                                <td align="center" id="pw2" onClick="powerSelected(2);">$25</td>
                             </tr>
                             <tr>
-                                <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
+                                <td align="center" id="pw1" onClick="powerSelected(1);">$10</td>
                             </tr>
                         </table>
                         <br />
                         <img id="spin_button" src="/Images/spin_off.png" alt="Spin" onClick="startSpin();" />
                         <br /><br />
-                        &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                        <a href="#" onClick="resetWheel(); return false;">Play Again</a><br />(RESET)
                     </div>
                 </td>
                 <td width="438" height="582" class="the_wheel" align="center" valign="center">
@@ -63,35 +63,35 @@ include 'layout/navbar.php';
             let theWheel = new Winwheel({
                 'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
                 'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
-                'textFontSize'    : 24,         // Set default font size for the segments.
+                'textFontSize'    : 16,         // Set default font size for the segments.
                 'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
                 'textAlignment'   : 'outer',    // Align text to outside of wheel.
                 'numSegments'     : 24,         // Specify number of segments.
                 'segments'        :             // Define segments including colour and text.
                 [                               // font size and test colour overridden on backrupt segments.
-                   {'fillStyle' : '#ee1c24', 'text' : '300'},
-                   {'fillStyle' : '#3cb878', 'text' : '450'},
-                   {'fillStyle' : '#f6989d', 'text' : '600'},
-                   {'fillStyle' : '#00aef0', 'text' : '750'},
-                   {'fillStyle' : '#f26522', 'text' : '500'},
-                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
-                   {'fillStyle' : '#e70697', 'text' : '3000'},
-                   {'fillStyle' : '#fff200', 'text' : '600'},
-                   {'fillStyle' : '#f6989d', 'text' : '700'},
-                   {'fillStyle' : '#ee1c24', 'text' : '350'},
-                   {'fillStyle' : '#3cb878', 'text' : '500'},
-                   {'fillStyle' : '#f26522', 'text' : '800'},
-                   {'fillStyle' : '#a186be', 'text' : '300'},
-                   {'fillStyle' : '#fff200', 'text' : '400'},
-                   {'fillStyle' : '#00aef0', 'text' : '650'},
-                   {'fillStyle' : '#ee1c24', 'text' : '1000'},
-                   {'fillStyle' : '#f6989d', 'text' : '500'},
-                   {'fillStyle' : '#f26522', 'text' : '400'},
-                   {'fillStyle' : '#3cb878', 'text' : '900'},
-                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
-                   {'fillStyle' : '#a186be', 'text' : '600'},
-                   {'fillStyle' : '#fff200', 'text' : '700'},
-                   {'fillStyle' : '#00aef0', 'text' : '800'},
+                   {'fillStyle' : '#ee1c24', 'text' : 'X3'},
+                   {'fillStyle' : '#3cb878', 'text' : 'X4.5'},
+                   {'fillStyle' : '#f6989d', 'text' : 'X6'},
+                   {'fillStyle' : '#00aef0', 'text' : 'X7.5'},
+                   {'fillStyle' : '#f26522', 'text' : 'X5'},
+                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 12, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#e70697', 'text' : 'X30'},
+                   {'fillStyle' : '#fff200', 'text' : 'X6'},
+                   {'fillStyle' : '#f6989d', 'text' : 'X7'},
+                   {'fillStyle' : '#ee1c24', 'text' : 'X3.5'},
+                   {'fillStyle' : '#3cb878', 'text' : 'X5'},
+                   {'fillStyle' : '#f26522', 'text' : 'X8'},
+                   {'fillStyle' : '#a186be', 'text' : 'X3'},
+                   {'fillStyle' : '#fff200', 'text' : 'X4'},
+                   {'fillStyle' : '#00aef0', 'text' : 'X6.5'},
+                   {'fillStyle' : '#ee1c24', 'text' : 'X10'},
+                   {'fillStyle' : '#f6989d', 'text' : 'X5'},
+                   {'fillStyle' : '#f26522', 'text' : 'X4'},
+                   {'fillStyle' : '#3cb878', 'text' : 'X9'},
+                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 12, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#a186be', 'text' : 'X6'},
+                   {'fillStyle' : '#fff200', 'text' : 'X7'},
+                   {'fillStyle' : '#00aef0', 'text' : 'X8'},
                    {'fillStyle' : '#ffffff', 'text' : 'LOOSE TURN', 'textFontSize' : 12}
                 ],
                 'animation' :           // Specify the animation to use.
@@ -221,7 +221,7 @@ include 'layout/navbar.php';
                 } else if (indicatedSegment.text == 'BANKRUPT') {
                     alert('Oh no, you have gone BANKRUPT!');
                 } else {
-                    alert("You have won " + indicatedSegment.text);
+                    alert("You have won " + indicatedSegment.text + "Of Your Current Stake!");
                 }
             }
         </script>

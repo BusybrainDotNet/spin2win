@@ -10,10 +10,6 @@ Verison History:
     - Minor updates for the 2.0 winwheel example.
 */
 
-body
-{
-    font-family: arial;
-}
 
 /* Sets the background image for the wheel */
 td.the_wheel

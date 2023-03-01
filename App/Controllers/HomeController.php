@@ -32,6 +32,58 @@ class HomeController extends Controller
 
 
 
+
+
+    public function howto()
+    {
+        $v = new Validate();
+
+        //$coyInfo = ModelFactory::model('Admin')->coyData();
+
+        $data = array(
+            //'coyInfo' => $coyInfo,
+        );
+
+        $this->view('Front/index', $data);
+    }
+
+
+
+
+
+
+    public function faqs()
+    {
+        $v = new Validate();
+
+        //$coyInfo = ModelFactory::model('Admin')->coyData();
+
+        $data = array(
+            //'coyInfo' => $coyInfo,
+        );
+
+        $this->view('Front/index', $data);
+    }
+
+
+
+
+    
+    public function contact()
+    {
+        $v = new Validate();
+
+        //$coyInfo = ModelFactory::model('Admin')->coyData();
+
+        $data = array(
+            //'coyInfo' => $coyInfo,
+        );
+
+        $this->view('Front/index', $data);
+    }
+
+
+
     /**
      * Display method for dynamic route
      * 

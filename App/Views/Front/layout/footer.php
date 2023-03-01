@@ -14,7 +14,7 @@
     <section class="w3l-footer">
       <div class="w3l-footer-16-main py-5">
         <div class="container">
-          <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
+          <div class="d-flex below-section justify-content-between align-items-center">
             <div class="columns text-lg-left text-center">
               <p>
                  <strong>&copy; Copyright <span> <script type="text/JavaScript">

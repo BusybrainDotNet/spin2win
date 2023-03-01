@@ -3,7 +3,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
         <h6><a class="navbar-brand" href="<?= baseURL('index/'); ?>">
-            <img src="/Images/favicon.png" alt="logo" title="Logo" style="height:40px;" /><?= substr(getenv('APP_NAME'), 0,4);?><span><?= substr(getenv('APP_NAME'), 5);?></span>
+            <img src="/Images/favicon.png" alt="logo" title="Logo" style="height:40px;" /><?= substr(getenv('APP_NAME'), 0,5);?><span><?= substr(getenv('APP_NAME'), 5);?></span>
           </a></h6>
         <!-- if logo is image enable this  -->  
         <!-- <a class="navbar-brand" href="<?= baseURL('index/'); ?>">
@@ -23,10 +23,13 @@
               <a class="nav-link" href="<?= baseURL('index/'); ?>">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('about-us/'); ?>">How To Play</a>
+              <a class="nav-link" href="<?= baseURL('how-to-play/'); ?>">How to Play</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('our-services/'); ?>">Faqs</a>
+              <a class="nav-link" href="<?= baseURL('faqs/'); ?>">Faqs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= baseURL('contact-us/'); ?>">Contact Us</a>
             </li>
 
             <li class="nav-item">
