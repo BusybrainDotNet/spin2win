@@ -13,8 +13,8 @@ include 'location.php';
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <meta name="description" content="At <?= getenv('APP_NAME'); ?>, We Offer The Most Professional Construction Engineering, Buying & Selling of Real Estate & Properties." />
-  <meta name="keywords" content="Real Estate, Building Construction, Architectural Designs, Construction Engineering, Buy Home, Sell Home" />
+  <meta name="description" content="At <?= getenv('APP_NAME'); ?>, Spin and win cash prizes." />
+  <meta name="keywords" content="Spin and win cash prizes" />
   <meta name="author" content="ITM-Network" />
 
   <!-- Facebook and Twitter integration -->
@@ -22,11 +22,11 @@ include 'location.php';
   <meta property="og:image" content="/Images/favicon.png"/>
   <meta property="og:url" content="<?= getenv('APP_LINK')?>"/>
   <meta property="og:site_name" content="<?= getenv('APP_NAME')?>"/>
-  <meta property="og:description" content="We offer the most professional buying and selling of real estate."/>
+  <meta property="og:description" content="Spin and win cash prizes."/>
   <meta name="twitter:title" content="<?= getenv('APP_NAME')?>" />
   <meta name="twitter:image" content="/Images/favicon.png" />
   <meta name="twitter:url" content="<?= getenv('APP_LINK')?>" />
-  <meta name="twitter:card" content="We offer the most professional buying and selling of real estate." />
+  <meta name="twitter:card" content="Spin and win cash prizes." />
 
 
   <!-- Favicons -->

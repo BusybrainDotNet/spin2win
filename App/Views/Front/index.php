@@ -8,23 +8,223 @@ include 'layout/navbar.php';
 <title>Home | Welcome | <?= getenv('APP_NAME'); ?></title>
 
 
-<?php include 'slider.php';  ?>
-
-
  <!--/grids-->
   <section class="w3l-grids-3 py-5" id="about">
     <div class="container py-md-5">
       <div class="row bottom-ab-grids align-items-center">
         <div class="col-lg-6 bottom-ab-left pr-lg-5">
-          <h6 class="sub-title">About Us</h6>
-          <h3 class="hny-title">At <?= trim(getenv('APP_NAME')); ?>, We are advocates for improving the world around us.</h3>
-          <p class="my-3 pr-lg-4">This synergy allows us to seamlessly provide engineering solutions to shop drawing submittals and design-build solutions for unique projects. We take pride in our work and strive for quality with every step.
-          Our professional brandtenders help with expert guidance, out-of-the-box perspectives, seamless execution, deadline-focused delivery, and centralized communication facilitated by offices across the country and a growing international presence. 
+          <h6 class="sub-title">Welcome To <?= trim(getenv('APP_NAME')); ?>, </h6>
+          <h3 class="hny-title">SPIN AND WIN CASH PRIZES.</h3>
+          <p class="my-3 pr-lg-4">
+            Spin The Luckey Wheel And Win Real Money And Gifts Instantly!
           </p>
-          <a href="<?= baseURL('about-us/'); ?>" class="btn btn-style btn-secondary mt-4">Read More</a>
+          <a href="<?= baseURL('about-us/'); ?>" class="btn btn-style btn-secondary mt-4">Learn How To Play</a>
         </div>
         <div class="col-lg-6 bottom-ab-right mt-lg-0 mt-5">
-          <img src="/Images/other5.jpeg" class="img-fluid" alt="About Us"> 
+          <link rel="stylesheet" href="<?= public_asset('/other_assets/front/assets/spinner/main.css') ?>" type="text/css" />
+          <script type="text/javascript" src="<?= public_asset('/other_assets/front/assets/spinner/winwheel.js') ?>"></script>
+          <script src="<?= public_asset('/other_assets/front/assets/spinner/TweenMax.min.js') ?>"></script>
+
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <div class="power_controls">
+                        <br />
+                        <br />
+                        <table class="power" cellpadding="10" cellspacing="0">
+                            <tr>
+                                <th align="center">Power</th>
+                            </tr>
+                            <tr>
+                                <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
+                            </tr>
+                            <tr>
+                                <td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
+                            </tr>
+                            <tr>
+                                <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
+                            </tr>
+                        </table>
+                        <br />
+                        <img id="spin_button" src="/Images/spin_off.png" alt="Spin" onClick="startSpin();" />
+                        <br /><br />
+                        &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                    </div>
+                </td>
+                <td width="438" height="582" class="the_wheel" align="center" valign="center">
+                    <canvas id="canvas" width="434" height="434">
+                        <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+                    </canvas>
+                </td>
+            </tr>
+        </table>
+        <script>
+            // Create new wheel object specifying the parameters at creation time.
+            let theWheel = new Winwheel({
+                'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
+                'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
+                'textFontSize'    : 24,         // Set default font size for the segments.
+                'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
+                'textAlignment'   : 'outer',    // Align text to outside of wheel.
+                'numSegments'     : 24,         // Specify number of segments.
+                'segments'        :             // Define segments including colour and text.
+                [                               // font size and test colour overridden on backrupt segments.
+                   {'fillStyle' : '#ee1c24', 'text' : '300'},
+                   {'fillStyle' : '#3cb878', 'text' : '450'},
+                   {'fillStyle' : '#f6989d', 'text' : '600'},
+                   {'fillStyle' : '#00aef0', 'text' : '750'},
+                   {'fillStyle' : '#f26522', 'text' : '500'},
+                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#e70697', 'text' : '3000'},
+                   {'fillStyle' : '#fff200', 'text' : '600'},
+                   {'fillStyle' : '#f6989d', 'text' : '700'},
+                   {'fillStyle' : '#ee1c24', 'text' : '350'},
+                   {'fillStyle' : '#3cb878', 'text' : '500'},
+                   {'fillStyle' : '#f26522', 'text' : '800'},
+                   {'fillStyle' : '#a186be', 'text' : '300'},
+                   {'fillStyle' : '#fff200', 'text' : '400'},
+                   {'fillStyle' : '#00aef0', 'text' : '650'},
+                   {'fillStyle' : '#ee1c24', 'text' : '1000'},
+                   {'fillStyle' : '#f6989d', 'text' : '500'},
+                   {'fillStyle' : '#f26522', 'text' : '400'},
+                   {'fillStyle' : '#3cb878', 'text' : '900'},
+                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#a186be', 'text' : '600'},
+                   {'fillStyle' : '#fff200', 'text' : '700'},
+                   {'fillStyle' : '#00aef0', 'text' : '800'},
+                   {'fillStyle' : '#ffffff', 'text' : 'LOOSE TURN', 'textFontSize' : 12}
+                ],
+                'animation' :           // Specify the animation to use.
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 10,    // Duration in seconds.
+                    'spins'    : 3,     // Default number of complete spins.
+                    'callbackFinished' : alertPrize,
+                    'callbackSound'    : playSound,   // Function to call when the tick sound is to be triggered.
+                    'soundTrigger'     : 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
+                },
+                'pins' :				// Turn pins on.
+                {
+                    'number'     : 24,
+                    'fillStyle'  : 'silver',
+                    'outerRadius': 4,
+                }
+            });
+
+            // Loads the tick audio sound in to an audio object.
+            let audio = new Audio('Images/tick.mp3');
+
+            // This function is called when the sound is to be played.
+            function playSound()
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0;
+
+                // Play the sound.
+                audio.play();
+            }
+
+            // Vars used by the code in this page to do power controls.
+            let wheelPower    = 0;
+            let wheelSpinning = false;
+
+            // -------------------------------------------------------
+            // Function to handle the onClick on the power buttons.
+            // -------------------------------------------------------
+            function powerSelected(powerLevel)
+            {
+                // Ensure that power can't be changed while wheel is spinning.
+                if (wheelSpinning == false) {
+                    // Reset all to grey incase this is not the first time the user has selected the power.
+                    document.getElementById('pw1').className = "";
+                    document.getElementById('pw2').className = "";
+                    document.getElementById('pw3').className = "";
+
+                    // Now light up all cells below-and-including the one selected by changing the class.
+                    if (powerLevel >= 1) {
+                        document.getElementById('pw1').className = "pw1";
+                    }
+
+                    if (powerLevel >= 2) {
+                        document.getElementById('pw2').className = "pw2";
+                    }
+
+                    if (powerLevel >= 3) {
+                        document.getElementById('pw3').className = "pw3";
+                    }
+
+                    // Set wheelPower var used when spin button is clicked.
+                    wheelPower = powerLevel;
+
+                    // Light up the spin button by changing it's source image and adding a clickable class to it.
+                    document.getElementById('spin_button').src = "Images/spin_on.png";
+                    document.getElementById('spin_button').className = "clickable";
+                }
+            }
+
+            // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin()
+            {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false) {
+                    // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+                    // to rotate with the duration of the animation the quicker the wheel spins.
+                    if (wheelPower == 1) {
+                        theWheel.animation.spins = 3;
+                    } else if (wheelPower == 2) {
+                        theWheel.animation.spins = 6;
+                    } else if (wheelPower == 3) {
+                        theWheel.animation.spins = 10;
+                    }
+
+                    // Disable the spin button so can't click again while wheel is spinning.
+                    document.getElementById('spin_button').src       = "Images/spin_off.png";
+                    document.getElementById('spin_button').className = "";
+
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
+
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+                }
+            }
+
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel()
+            {
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+
+                document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+                document.getElementById('pw2').className = "";
+                document.getElementById('pw3').className = "";
+
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            }
+
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment)
+            {
+                // Just alert to the user what happened.
+                // In a real project probably want to do something more interesting than this with the result.
+                if (indicatedSegment.text == 'LOOSE TURN') {
+                    alert('Sorry but you loose a turn.');
+                } else if (indicatedSegment.text == 'BANKRUPT') {
+                    alert('Oh no, you have gone BANKRUPT!');
+                } else {
+                    alert("You have won " + indicatedSegment.text);
+                }
+            }
+        </script>
         </div>
 
       </div>
@@ -33,58 +233,45 @@ include 'layout/navbar.php';
   <!--//grids-->
 
 
-
-    <!--/get -->
-  <section class="w3l-grid-quote text-center py-5">
-    <div class="container py-3">
-      <h6 class="sub-title text-center">Have an Idea In Mind?</h6>
-      <h3 class="hny-title mb-md-5 mb-4">Let's Discuss Your Idea! <br> Contact Us.</h3>
-      <a href="<?= baseURL('hire-us/'); ?>" class="btn btn-style btn-primary mr-2">Hire Us</a>
-      <a href="<?= baseURL('hire-us/'); ?>" class="btn btn-style btn-outline-primary">Get in touch</a>
-    </div>
-  </section>
-  <!--//get -->
-
-
   <!--/services-->
     <section class="w3l-features14">
     <div class="w3l-feature-6-main py-5">
       <div class="container py-lg-5">
         <div class="wrapper-max">
           <div class="header-section text-center mb-5">
-            <h6 class="sub-title">Services We Do</h6>
+            <h6 class="sub-title">We are your best bet!</h6>
             <h3 class="hny-title two">
-              Services We Offer
+            WHY CHOOSE US?
             </h3>
           </div>
           <div class="grid mt-lg-4">
             <div class="w3l-feature-6-gd">
               <div class="icon"><span class="fa fa-cogs"></span></div>
               <div class="w3l-feature-6-gd-info">
-                <h3><a href="#url">Construction</a></h3>
-                <p class="pr-lg-5"> We share a deep belief that construction, when executed thoughtfully, builds community and contributes to the fiber that elevates and holds society together. Regardless of complexity, we present options for each scenario along with realistic cost estimates. 
+                <h3><a href="#url">Easy to play game</a></h3>
+                <p class="pr-lg-5"> DailySpin2win spin the wheel game is the simplest and most straightforward game to play.
                 </p>
               </div>
             </div>
             <div class="w3l-feature-6-gd">
               <div class="icon"><span class="fa fa-home"></span></div>
               <div class="w3l-feature-6-gd-info">
-                <h3><a href="#url">Building Engineering</a></h3>
-                <p class="pr-lg-5">Our desire is to create and advocate for responsible architecture; architecture that advances the quality of our world, our ability to perceive it and our relationship to it.</p>
+                <h3><a href="#url">Welcome Bonus</a></h3>
+                <p class="pr-lg-5">New players receive bonus to spin and win real cash. Enjoy weekly promotional bonuses for active players.</p>
               </div>
             </div>
             <div class="w3l-feature-6-gd">
               <div class="icon"><span class="fa fa-money"></span></div>
               <div class="w3l-feature-6-gd-info">
-                <h3><a href="#url">Sales & Lease</a></h3>
-                <p class="pr-lg-5">We are committed to providing our clients an exceptional experience throughout the leasing, buying or selling process of the project. We actively listen and strive for clear communication coupled with satisfactory services.</p>
+                <h3><a href="#url">Unlock New Levels</a></h3>
+                <p class="pr-lg-5">New levels guarantee great bonuses for more free spins. Get rewarded real cash for every new level.</p>
               </div>
             </div>
             <div class="w3l-feature-6-gd">
               <div class="icon"><span class="fa fa-pie-chart"></span></div>
               <div class="w3l-feature-6-gd-info">
-                <h3><a href="#url">Interior Designs</a></h3>
-                <p class="pr-lg-5">We embrace projects that contribute a “greater good” within our local and international communities by actively pursuing work that allows the firm to contribute responsible, modern and elegant design solutions that benefit others. “Interior Designs is not just a design philosophy; it’s an entirely new way of thinking – and living.</p>
+                <h3><a href="#url">100% Secure</a></h3>
+                <p class="pr-lg-5">We are licensed and regulated by an independent governing body. They ensue we give our clients a fair game.</p>
               </div>
             </div>
             
@@ -99,13 +286,18 @@ include 'layout/navbar.php';
   </section>
   <!--//services-->
 
-
-<?php include 'hire-us-link.php'; ?>
-
-
-
-<?php include 'catalogue-display.php'; ?>
-
+    <!--/get -->
+    <section class="w3l-grid-quote text-center py-5">
+    <div class="container py-3">
+      <h6 class="sub-title text-center">Spin Now And Get Paid Instantly!</h6>
+      <h3 class="hny-title mb-md-5 mb-4">GET PAYOUTS IN THE MOST CONVENIENT WAY</h3>
+      <img src="/Images/paymentmethod1.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Images/paymentmethod2.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Images/paymentmethod7.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- <img src="/Images/paymentmethod6.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> <img src="/Images/paymentmethod5.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Images/paymentmethod4.png" class="img-fluid" alt="Payment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Images/paymentmethod3.png" class="img-fluid" alt="Payment"> 
+      <hr>
+      <a href="<?= baseURL('register/')?>" class="btn btn-style btn-primary mr-2">Start Here</a>
+      <a href="<?= baseURL('login/')?>" class="btn btn-style btn-outline-primary">Login Now</a>
+    </div>
+  </section>
+  <!--//get -->
 
   <!-- testimonials -->
   <section class="w3l-clients" id="clients">
@@ -124,7 +316,7 @@ include 'layout/navbar.php';
                 <div class="testimonial">
                   <blockquote>
                     <span class="fa fa-quote-left" aria-hidden="true"></span>
-                    <?= getenv('APP_NAME'); ?> worked closely with us every step of the way to ensure our home was not only beautiful and sustainable but also a real manifestation of our vision and our lifestyle.
+                    They offer an all-around reliable experience and lightning fast payouts. <?= getenv('APP_NAME')?> has developed a reputation for offering top service.
                   </blockquote>
                   <div class="testi-des">
                     <div class="test-img"><img src="/Images/favicon.png" class="img-fluid" alt="client-img">
@@ -142,7 +334,7 @@ include 'layout/navbar.php';
                 <div class="testimonial">
                   <blockquote>
                     <span class="fa fa-quote-left" aria-hidden="true"></span>
-                    <?= getenv('APP_NAME'); ?> are professionals and they provide an accurate and ongoing description of the design process throughout the project to eliminate surprises. Thumbs up guys!
+                    I loved the many bonuses and the free spins that are available.. Thumbs up guys!
                   </blockquote>
                   <div class="testi-des">
                     <div class="test-img"><img src="/Images/favicon.png" class="img-fluid" alt="client-img">
@@ -160,7 +352,7 @@ include 'layout/navbar.php';
                 <div class="testimonial">
                   <blockquote>
                     <span class="fa fa-quote-left" aria-hidden="true"></span>
-                    We worked collaboratively on different projects and enter into each project with a fresh perspective. <?= getenv('APP_NAME'); ?>'s team bring inspiring ideas, and we always want to listen and learn from them.
+                    The referral program really works for me. I always have extra bonus to spin for real cash.
                   </blockquote>
                   <div class="testi-des">
                     <div class="test-img"><img src="/Images/favicon.png" class="img-fluid" alt="client-img">
@@ -182,15 +374,6 @@ include 'layout/navbar.php';
     <!-- //grids -->
   </section>
   <!-- //testimonials -->
-
-
-
-
-
-<?php include 'hire-us-link.php'; ?>
-
-
-<?php include 'selling-now-link.php'; ?>
 
 
 <?php 

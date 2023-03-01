@@ -14,56 +14,6 @@
     <section class="w3l-footer">
       <div class="w3l-footer-16-main py-5">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-6 column">
-              <div class="row">
-                <div class="col-md-4 column">
-                  <h3>Company</h3>
-                  <ul class="footer-gd-16">
-                    <li><a href="<?= baseURL('index/'); ?>">Home</a></li>
-                    <li><a href="<?= baseURL('about-us/'); ?>">About Us</a></li>
-                    <li><a href="<?= baseURL('our-services/'); ?>">Our Services</a></li>
-                    <li><a href="<?= baseURL('member-area/'); ?>">Member Area</a></li>
-                    <li><a href="<?= baseURL('contact-us/'); ?>">Contact Us</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4 column mt-md-0 mt-4">
-                  <h3>Our Services</h3>
-                  <ul class="footer-gd-16">
-                    <li><a href="<?= baseURL('our-services/'); ?>">Building</a></li>
-                    <li><a href="<?= baseURL('selling-now/'); ?>">Buying & Selling</a></li>
-                    <li><a href="<?= baseURL('our-services/'); ?>">Construction</a></li>
-                    <li><a href="<?= baseURL('our-services/'); ?>">Interior Design</a></li>
-                    <li><a href="<?= baseURL('renting-now/'); ?>">Lease | Rent</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4 column mt-md-0 mt-4">
-                  <h3>Useful Links</h3>
-                  <ul class="footer-gd-16">
-                     <li><a href="<?= baseURL('privacy-policy/'); ?>">Privacy Policy</a></li>
-                    <li><a href="<?= baseURL('terms-of-service/'); ?>">Our Terms</a></li>
-                    <li><a href="<?= baseURL('hire-us/'); ?>">Hire Us</a></li>
-                    <li><a href="<?= baseURL('catalogue/'); ?>">Project Catalogue</a></li>
-                    <li><a href="<?= baseURL('selling-now/'); ?>">Recent Deals</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
-              <h3>Newsletter </h3>
-              <div class="end-column">
-                <h4>Get latest updates and offers.</h4>
-                <form action="<?= baseURL('subscribe/'); ?>" class="subscribe" method="POST">
-                  <input type="hidden" name="ip" value="<?php echo $ip?>">
-                  <input type="hidden" name="ua" value="<?php echo $user_agent?>">
-                  <input type="hidden" name="type" value="Newsletter">
-                  <input type="email" name="e" placeholder="Email Address" required="">
-                  <button type="submit" name="sub">Go</button>
-                </form>
-                <p>Sign up for our monthly news, articles & promotional offers.</p>
-              </div>
-            </div>
-          </div>
           <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
             <div class="columns text-lg-left text-center">
               <p>

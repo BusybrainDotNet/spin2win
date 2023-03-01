@@ -3,7 +3,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
         <h6><a class="navbar-brand" href="<?= baseURL('index/'); ?>">
-            <img src="/Images/favicon.png" alt="logo" title="Logo" style="height:40px;" /> Project<span>Express</span>
+            <img src="/Images/favicon.png" alt="logo" title="Logo" style="height:40px;" /><?= substr(getenv('APP_NAME'), 0,4);?><span><?= substr(getenv('APP_NAME'), 5);?></span>
           </a></h6>
         <!-- if logo is image enable this  -->  
         <!-- <a class="navbar-brand" href="<?= baseURL('index/'); ?>">
@@ -23,40 +23,16 @@
               <a class="nav-link" href="<?= baseURL('index/'); ?>">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('about-us/'); ?>">About Us</a>
+              <a class="nav-link" href="<?= baseURL('about-us/'); ?>">How To Play</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('our-services/'); ?>">Our Services</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('hire-us/'); ?>">Hire Us</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="<?= baseURL('selling-now/'); ?>">Selling Now</a>
+              <a class="nav-link" href="<?= baseURL('our-services/'); ?>">Faqs</a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= baseURL('login/'); ?>">Login</a>
             </li>
 
-            <div class="search-right">
-              <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
-              <!-- search popup -->
-              <div id="search" class="pop-overlay">
-                <div class="popup">
-
-                  <form action="<?= baseURL('search/'); ?>" method="POST" class="search-box">
-                    <input type="search" placeholder="Property Search Keyword" name="search" required="required" autofocus="">
-                    <button type="submit" class="btn" name="formSearch">Search Now</button>
-                  </form>
-
-                </div>
-                <a class="close" href="#close">×</a>
-              </div>
-              <!-- /search popup -->
-            </div>
           </ul>
         </div>
         <!-- toggle switch for light and dark theme -->

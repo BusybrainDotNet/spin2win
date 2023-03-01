@@ -3,6 +3,8 @@
 namespace Config;
 require 'vendor/autoload.php';
 
+require_once 'App/Models/Login.php';
+require_once 'App/Models/Register.php';
 require_once 'App/Models/User.php';
 
 class ModelFactory
