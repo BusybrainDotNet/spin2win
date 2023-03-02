@@ -27,16 +27,16 @@ abstract class Model
 //Insert Entries Into Database
     public function insert($data, $query)
     {
-        try {
+       try {
             $stmt = $this->dbcon->prepare($query);
             foreach ($data as $key => &$val) {
                 $stmt->bindParam($key, $val, PDO::PARAM_STR);
             }
             $o = $stmt->execute($data);
             return $o;
-        } catch (Exception $e) {
-          return $e;          
-        }
+       } catch (Exception $e) {
+           return $e;         
+       }
     }
 
 
@@ -67,16 +67,16 @@ abstract class Model
     public function fetch_row($data, $query)
     {   
         try {
-                $stmt = $this->dbcon->prepare($query);
-                foreach ($data as $key => &$val) {
-                    $stmt->bindParam($key, $val, PDO::PARAM_STR);
-                }
-                $stmt->execute($data);
-                $info = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-                return $info;  
+            $stmt = $this->dbcon->prepare($query);
+            foreach ($data as $key => &$val) {
+                $stmt->bindParam($key, $val, PDO::PARAM_STR);
+            }
+            $stmt->execute($data);
+            $info = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            return $info;  
            } catch (Exception $e) {
-           return $e;     
+             return $e;  
         }   
     }
 
@@ -93,7 +93,7 @@ abstract class Model
             } 
             $stmt->execute(); 
         } catch (Exception $e) {
-           return $e;   
+            return $e;  
         }  
     }
 
@@ -114,7 +114,7 @@ abstract class Model
                 return $row;
             }
         } catch (Exception $e) {
-            return $e;        
+             return $e;       
         }    
     }
 
@@ -129,7 +129,7 @@ abstract class Model
             $o = $stmt->fetch(PDO::FETCH_NUM);
             return $o;
         } catch (Exception $e) {
-            return $e;                        
+           return $e;                         
         }
     }
 
@@ -178,7 +178,7 @@ abstract class Model
             $counted = $stmt->fetchColumn();
             return $counted;
         } catch (Exception $e) {
-           return $e; 
+            return $e;   
         }
     }
 
@@ -211,9 +211,10 @@ abstract class Model
                 $stmt->bindParam($key, $val, PDO::PARAM_STR);
             }
             $stmt->execute($data);
+            //$o = $stmt->fetch(PDO::FETCH_ASSOC);
             return true;
         } catch (Exception $e) {
-           return $e; 
+            return $e;
         }
     }
 
